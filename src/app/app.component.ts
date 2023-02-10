@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'learning_angular';
+  title = 'Learning Angular';
+  counter:string = 'its going';
+
+  incrementCounter(){
+    this.counter += ' and going...'
+  }
 }
