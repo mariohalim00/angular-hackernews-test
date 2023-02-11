@@ -6,8 +6,6 @@ import { MomentModule } from 'ngx-moment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoryComponent } from './story/story.component';
-import { AskStoriesComponent } from './ask-stories/ask-stories.component';
-import { TopStoriesComponent } from './top-stories/top-stories.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -16,8 +14,6 @@ import { PostListComponent } from './post-list/post-list.component';
   declarations: [
     AppComponent,
     StoryComponent,
-    AskStoriesComponent,
-    TopStoriesComponent,
     StoryDetailComponent,
     CommentsComponent,
     PostListComponent
