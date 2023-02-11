@@ -10,6 +10,7 @@ import { AskStoriesComponent } from './ask-stories/ask-stories.component';
 import { TopStoriesComponent } from './top-stories/top-stories.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { CommentsComponent } from './comments/comments.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CommentsComponent } from './comments/comments.component';
     AskStoriesComponent,
     TopStoriesComponent,
     StoryDetailComponent,
-    CommentsComponent
+    CommentsComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
