@@ -1,1 +1,12 @@
-<p>story-detail works!</p>
+<div>
+  <h3 *ngIf="data.title">{{data.title??""}}</h3>
+  <h5 class="subtext">
+    by: {{data.by}} | {{data.score}} points | {{data.descendants}} {{data.descendants ? 'comments' : 'comment'}} | {{data.time | amFromUnix}}
+  </h5>
+  <div class="mainText" [innerHTML]="data.text">
+    
+  </div>
+   <app-comments *ngFor="let commentId of data.kids;" [id]="commentId">
+    
+  </app-comments> 
+</div>

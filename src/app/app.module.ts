@@ -9,6 +9,7 @@ import { StoryComponent } from './story/story.component';
 import { AskStoriesComponent } from './ask-stories/ask-stories.component';
 import { TopStoriesComponent } from './top-stories/top-stories.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StoryDetailComponent } from './story-detail/story-detail.component';
     StoryComponent,
     AskStoriesComponent,
     TopStoriesComponent,
-    StoryDetailComponent
+    StoryDetailComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,6 @@
+<div *ngIf="comment" class="commentContainer">
+  <div class="commentAuthorInfo" >{{comment.by}} | {{comment.time | amFromUnix}} </div>
+  <div [innerHTML]="comment.text" class="commentText"></div>
+  <app-comments *ngFor="let commentId of comment.kids;" [id]="commentId"></app-comments>
+</div>
+
