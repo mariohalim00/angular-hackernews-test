@@ -8,15 +8,16 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent {
+  // constants
   PAGE_SIZE: number = 20;
 
+  // variables
   latestHNStoriesIds: any;
   postTypeURI: string = "ask";
   currentPage: number = 1;
   storiesIdsList: number[] = [];
 
   constructor(private postService: PostService, private router: Router) {
-    this.postService.getLatestTopStories();
   }
 
 
@@ -26,14 +27,11 @@ export class PostListComponent {
   }
 
   getStoriesByPostType (postTypeURL: string) {
-    let result: any;
-    if(postTypeURL === '/' || postTypeURL === '/ask') return this.postService.getLatestAskHNStories().subscribe(obj => this.latestHNStoriesIds = obj);
-    if(postTypeURL === '/top') return this.postService.getLatestTopStories().subscribe(obj => this.latestHNStoriesIds = obj);
+    // example: frontend url is www.aaa.com/worst
+    // this function will send the '/post' as parameter to the service function to get the list of stories by that type of post (e.g. top, ask, new, etc.)
 
-    
+   return this.postService.getStoriesByTypesInURL(postTypeURL).subscribe(obj => this.latestHNStoriesIds = obj);
 
-    //if url doesnt match anything
-    else return [-1];
   }
 
   storyTrackBy(index: number, item: any){

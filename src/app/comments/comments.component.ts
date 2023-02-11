@@ -14,6 +14,6 @@ export class CommentsComponent {
 
   @Input()
   set id(id: number){
-    this.postService.getStoriesById(id).subscribe(comment => this.comment = comment)
+    this.postService.getStoryById(id).subscribe(comment => this.comment = comment)
   }
 }

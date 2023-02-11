@@ -13,6 +13,9 @@ const STORY_URL: string = BASE_URL_V0 + "item/"
   providedIn: 'root'
 })
 
+
+// This is a service to manage the data received from the firebase backend
+
 export class PostService {
  
   storiesListIds: number[] = [];
@@ -20,23 +23,23 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
 
-   getLatestAskHNStories(){
-    let res = this.http.get(LATEST_ASK_HN_URL);
+  getStoriesByTypesInURL(url: string){
+    // example: frontend url is www.aaa.com/worst
+    // this function will receive the '/post' as parameter from the caller and choose the appropriate URL to run
+    
+    let api_url: string = "";
+    if(url === '/' || url === '/ask') api_url = LATEST_ASK_HN_URL;
+    if(url === '/top') api_url = LATEST_TOP_HN_URL;
+
+    let res = this.http.get(api_url);
     return res
   }
   
 
-  getStoriesById(id: number){
+  getStoryById(id: number){
     let url: string = STORY_URL + id.toString() + ".json?print=pretty"
     
     let res = this.http.get(url);
     return res;
   }
-
-  getLatestTopStories(){
-
-    let res = this.http.get(LATEST_TOP_HN_URL);
-    return res
-  }
-
 }

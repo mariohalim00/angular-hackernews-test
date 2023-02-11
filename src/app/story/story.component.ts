@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PostService } from '../post.service';
-import { Moment } from 'moment';
+
 
 @Component({
   selector: 'app-story',
@@ -14,6 +14,6 @@ export class StoryComponent {
 
   @Input()
   set id(id: number){
-    this.postService.getStoriesById(id).subscribe(story => this.story = story);
+    this.postService.getStoryById(id).subscribe(story => this.story = story);
   }
 }

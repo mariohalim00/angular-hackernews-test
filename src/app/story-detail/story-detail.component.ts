@@ -15,6 +15,7 @@ export class StoryDetailComponent {
   constructor(private route: ActivatedRoute, private postService: PostService){}
 
   ngOnInit (): void{
+    // get data based on id passed in the url and assign them to the variables for the view to access
     this.route.paramMap.subscribe(
       params => {
   
@@ -23,7 +24,7 @@ export class StoryDetailComponent {
       }
     )
     
-    let tempStory = this.postService.getStoriesById(this.postId);
+    let tempStory = this.postService.getStoryById(this.postId);
     tempStory.subscribe(obj => this.data = obj);
   }
 
