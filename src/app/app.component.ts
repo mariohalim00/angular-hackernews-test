@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Learning Angular';
-  counter:string = 'its going';
 
-  incrementCounter(){
-    this.counter += ' and going...'
-  }
 }

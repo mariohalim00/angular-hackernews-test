@@ -1,0 +1,14 @@
+<div *ngIf="story" class="postContainer">
+  <h3>
+    <a href="item/{{story.id}}">{{story.title}}</a>
+  </h3>
+  <footer>
+    <span *ngIf="story.score">{{story.score}} points |</span>
+    by: <span>{{story.by}} |</span>
+    {{(story.time | amFromUnix) }}
+    <span *ngIf="story.descendants">
+      | {{story.descendants}} {{story.descendants > 1 ? 'comments' : 'comment'}}
+    </span> 
+  </footer>
+
+</div>
