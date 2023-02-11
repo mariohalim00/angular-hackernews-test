@@ -20,18 +20,9 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
 
-  async getLatestAskHNStories(){
-    try{
-
-      let res = await axios.get(LATEST_ASK_HN_URL);
-      this.storiesListIds = res.data;
-      
-      return this.storiesListIds
-    }
-    catch(e){
-      console.error(e);
-      return e;
-    }
+   getLatestAskHNStories(){
+    let res = this.http.get(LATEST_ASK_HN_URL);
+    return res
   }
   
 
@@ -42,18 +33,10 @@ export class PostService {
     return res;
   }
 
-   async getLatestTopStories(){
-    try{
+  getLatestTopStories(){
 
-      let res = await axios.get(LATEST_TOP_HN_URL);
-      this.storiesListIds = res.data;
-      
-      return this.storiesListIds
-    }
-    catch(e){
-      console.error(e);
-      return e;
-    }
+    let res = this.http.get(LATEST_TOP_HN_URL);
+    return res
   }
 
 }

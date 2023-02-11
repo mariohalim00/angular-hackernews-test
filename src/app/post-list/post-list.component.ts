@@ -8,8 +8,12 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent {
+  PAGE_SIZE: number = 20;
+
   latestHNStoriesIds: any;
   postTypeURI: string = "ask";
+  currentPage: number = 1;
+  storiesIdsList: number[] = [];
 
   constructor(private postService: PostService, private router: Router) {
     this.postService.getLatestTopStories();
@@ -17,14 +21,18 @@ export class PostListComponent {
 
 
   ngOnInit() :void{
-    this.latestHNStoriesIds = this.getStoriesByPostType(this.router.url)
+    this.getStoriesByPostType(this.router.url);
+    
   }
 
   getStoriesByPostType (postTypeURL: string) {
-    if(postTypeURL === '/' || postTypeURL === '/ask') return this.postService.getLatestAskHNStories();
-    if(postTypeURL === '/top') return this.postService.getLatestTopStories();
+    let result: any;
+    if(postTypeURL === '/' || postTypeURL === '/ask') return this.postService.getLatestAskHNStories().subscribe(obj => this.latestHNStoriesIds = obj);
+    if(postTypeURL === '/top') return this.postService.getLatestTopStories().subscribe(obj => this.latestHNStoriesIds = obj);
 
-    //if uri doesnt match any
+    
+
+    //if url doesnt match anything
     else return [-1];
   }
 

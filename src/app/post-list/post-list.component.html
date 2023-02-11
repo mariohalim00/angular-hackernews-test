@@ -1,2 +1,5 @@
-<app-story *ngFor="let item of latestHNStoriesIds | async;" [id]="item">
+<app-story *ngFor="let item of latestHNStoriesIds | paginate: {itemsPerPage: PAGE_SIZE, currentPage: currentPage}" [id]="item">
+    {{item}}
   </app-story>
+
+   <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
