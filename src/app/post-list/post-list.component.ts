@@ -27,21 +27,43 @@ export class PostListComponent {
   
   
   ngOnInit() :void {
-    //tried using state management like redux to store the id, page still refreshed when user navigate back.
-    this.store.select(state => state.postListId.postListId).subscribe(obj => {
-      if(obj.length === 0 ){
-        console.log("firsTRUEFUFUt")
-        let storiesListObservable = this.getStoriesByPostType(this.router.url);
-        storiesListObservable.subscribe(data => {
+    //tried using state management like redux to store the id, data still loads when user navigate back.
+
+    // this.store.select(state => state.postListId.postListId).subscribe(obj => {
+    //   if(obj.length === 0 ){
+    //     let storiesListObservable = this.getStoriesByPostType(this.router.url);
+    //     storiesListObservable.subscribe(data => {
+    //       this.latestHNStoriesIds = data;
+    //       this.store.dispatch(new UpdatePostList(data as number[]));
+    //     })
+    //   }else{
+    //     return
+    //   }
+    // });
+
+    // used sessionStorage to store data
+    // this will additionally check if there are any updates/differences in the data stored and data received and will update the session storage accordingly
+    if(!sessionStorage.getItem('sessionPostIdList')){
+      let storiesListObservable = this.getStoriesByPostType(this.router.url);
+      storiesListObservable.subscribe(data => {
+        sessionStorage.setItem('sessionPostIdList', JSON.stringify(data));
+        this.latestHNStoriesIds = data;
+      })
+    }
+    else{
+      let storiesListObservable = this.getStoriesByPostType(this.router.url);
+      storiesListObservable.subscribe(data => {
+        if(JSON.stringify(data) !== sessionStorage.getItem('sessionPostIdList')){
+          sessionStorage.setItem('sessionPostIdList', JSON.stringify(data));
           this.latestHNStoriesIds = data;
-          this.store.dispatch(new UpdatePostList(data as number[]));
-        })
-      }else{
-        return
-      }
-    });
- 
-    // this.store.dispatch(new UpdatePostList())
+        }
+        else{
+          this.latestHNStoriesIds = JSON.parse(sessionStorage.getItem('sessionPostIdList')??"[]")
+        }
+      })
+    }
+
+
   }
 
   getStoriesByPostType (postTypeURL: string) {
