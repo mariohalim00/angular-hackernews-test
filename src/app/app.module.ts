@@ -9,6 +9,8 @@ import { StoryComponent } from './story/story.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { NgxsModule } from '@ngxs/store';
+import { PostListState } from './state/postList.state';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,9 @@ import { PostListComponent } from './post-list/post-list.component';
     HttpClientModule,
     MomentModule,
     NgxPaginationModule,
+    NgxsModule.forRoot([
+      PostListState
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
