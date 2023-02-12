@@ -1,6 +1,8 @@
 <div *ngIf="comment" class="commentContainer">
   <div class="commentAuthorInfo" >{{comment.by}} | {{comment.time | amFromUnix}} </div>
   <div [innerHTML]="comment.text" class="commentText"></div>
-  <app-comments *ngFor="let commentId of comment.kids;" [id]="commentId"></app-comments>
+  <!-- COMMENTED THE LINE BELOW TO LIMIT THE COMMENTS DEPTH TO ONLY THE FIRST CHILD OF PARENT POST -->
+  <!-- <app-comments *ngFor="let commentId of comment.kids;" [id]="commentId"></app-comments> -->
 </div>
 
+  
